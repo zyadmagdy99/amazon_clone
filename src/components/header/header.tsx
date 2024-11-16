@@ -12,7 +12,17 @@ import { addUser } from '@/lib/nextSlice';
 import SearchProducts from '../SearchProducts';
 import {  productProps } from '@/data';
 
-
+export interface storeProduct {
+  _id:number;
+  title:string;
+  description:string;
+  oldPrice:number;
+  price:number;
+  brand:string;
+  image:string;
+  isNew:boolean;
+  category:string;
+}
 interface stateProps {
   next: {
     productData: productProps[];
@@ -22,9 +32,6 @@ interface stateProps {
   };
 }
 
-
-interface storeProduct extends productProps {
-}
 
 const Header: React.FC = () => {
   const { productData, favouriteData, userInfo, allProducts } = useSelector(
