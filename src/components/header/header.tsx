@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSession, signIn } from "next-auth/react";
 import { addUser } from '@/lib/nextSlice';
 import SearchProducts from '../SearchProducts';
-import { NextState, productProps } from '@/data';
+import {  productProps } from '@/data';
 
 
 interface stateProps {
