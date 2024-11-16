@@ -21,10 +21,17 @@ export interface storeProduct {
     category:string;
     quantity:number
 }
+export interface NextState {
+    userInfo: string | null;
+    productData: [];
+    favouriteData: [];
+    allProducts: [];
+  }
 
 export interface stateProps {
     productData:[];
     favouriteData:[];
     userInfo:null|string;
-    next:any
+    next:NextState;
+    allProducts:[];
 }

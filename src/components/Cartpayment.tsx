@@ -5,7 +5,9 @@ import { useSelector } from 'react-redux';
 import { stateProps, storeProduct } from '@/data';
 import { loadStripe } from '@stripe/stripe-js';
 import { useSession } from 'next-auth/react';
-
+interface CheckoutSession {
+  id: string;
+}
 export default function Cartpayment() {
 
     const {productData, userInfo} = useSelector((state:stateProps)=>state.next)
@@ -38,12 +40,12 @@ export default function Cartpayment() {
           },
           body: JSON.stringify({ items: productData, email: session?.user?.email }),
         });
-        const checkoutSession = await response.json();
+        const checkoutSession : CheckoutSession = await response.json();
     
-        const result: any = await stripe?.redirectToCheckout({
+        const result = await stripe?.redirectToCheckout({
           sessionId: checkoutSession.id,
         });
-        if (result.error) {
+        if (result?.error) {
           alert(result?.error.message);
         }
       };

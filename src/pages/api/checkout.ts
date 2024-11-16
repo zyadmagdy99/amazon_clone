@@ -2,8 +2,13 @@ import { storeProduct } from './../../data';
 import { NextApiRequest, NextApiResponse } from "next";
 
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import Stripe from "stripe";
+interface Item {
+  image: string;
 
+}
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -34,7 +39,8 @@ export default async function handler(
     cancel_url: `${process.env.NEXTAUTH_URL}/checkout`,
     metadata: {
       email,
-      images: JSON.stringify((items ?? []).map((item: any) => item.image)),
+      images: JSON.stringify((items ?? []).map((item: Item) => item.image 
+      )),
     },
   });
   res.status(200).json({
