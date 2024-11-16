@@ -22,7 +22,11 @@ export interface storeProduct {
     quantity:number
 }
 export interface NextState {
-    userInfo: string | null;
+    userInfo: {
+        name:string,
+        email:string,
+        image:string
+    };
     productData: [];
     favouriteData: [];
     allProducts: [];
