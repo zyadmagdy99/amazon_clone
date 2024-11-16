@@ -6,7 +6,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 export default function Favourite() {
-    let {favouriteData} = useSelector((state:stateProps)=>state.next)
+    const {favouriteData} = useSelector((state:stateProps)=>state.next)
   return (
     <div className='max-w-screen-xl mx-auto px-6 gap-10 py-4'>
       {favouriteData.length >0 ?<div className='bg-white p-4 rounded-lg'> 

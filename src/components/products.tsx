@@ -12,7 +12,7 @@ interface props {
     data:productProps[]
 }
 export default function Products({data}:props) {
-    let dispatch = useDispatch()
+    const dispatch = useDispatch()
   return (
     <div className='w-full px-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4 mt-3 md:mt-0'>
       {

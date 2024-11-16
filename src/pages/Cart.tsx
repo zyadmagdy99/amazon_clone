@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 
 export default function Cart() {
-  let {productData} = useSelector((state: stateProps) => state.next)
+  const {productData} = useSelector((state: stateProps) => state.next)
   
   return (
     <div className='max-w-screen-2xl  mx-auto px-4 sm:px-6 md:px-10 lg:px-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-10 py-4'>

@@ -20,7 +20,7 @@ interface item {
 }
 
 export default function FavProduct({ item }: item) {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <div className="bg-gray-100 rounded-lg flex flex-col md:flex-row py-2 items-center gap-4 mb-2">
       <Image src={item.image} alt="product image" width={150} height={150} />

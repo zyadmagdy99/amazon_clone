@@ -1,7 +1,7 @@
 import { stateProps } from '@/data';
 import { removeUser } from '@/lib/nextSlice';
 import { signOut } from 'next-auth/react';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { LuMenu } from "react-icons/lu";
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +11,7 @@ interface Sidebarprops {
 }
 export default function Sidebar({showside,handleside}:Sidebarprops) {
     const {userInfo} = useSelector((state:stateProps)=>state.next)
-  let dispatch = useDispatch()
+  const dispatch = useDispatch()
   function handleSignOut(){
     signOut()
     dispatch(removeUser())

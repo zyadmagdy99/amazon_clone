@@ -14,7 +14,7 @@ import SearchProducts from '../SearchProducts';
 
 
 export default function Header() {
-  let {productData,favouriteData ,userInfo , allProducts} = useSelector((state:stateProps)=>state.next)
+  const {productData,favouriteData ,userInfo , allProducts} = useSelector((state:stateProps)=>state.next)
   const [allData, setallData] = useState([])
   const [inSearch, setinSearch] = useState('')
   const [filterData, setfilterData] = useState([])
@@ -35,7 +35,7 @@ function handleSearch(e:React.ChangeEvent<HTMLInputElement>){
   
 }
 
-  let dispatch = useDispatch()
+  const dispatch = useDispatch()
   const { data: session } = useSession();
   useEffect(() => {
     if (session) {

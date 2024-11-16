@@ -11,7 +11,7 @@ export default async function handler(
   const { items, email } = req.body;
   
   
-  let modifiedItems = (items).map((item:storeProduct) => ({
+  const modifiedItems = (items).map((item:storeProduct) => ({
     quantity: item.quantity,
     price_data: {
       currency: "usd",

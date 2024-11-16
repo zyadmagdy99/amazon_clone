@@ -21,7 +21,7 @@ export const nextSlice = createSlice({
     initialState,
     reducers:{
         addToCart:(state,action)=>{
-              let exisitingProduct = state.productData.find((product:storeProduct)=>product._id===action.payload._id);
+              const exisitingProduct = state.productData.find((product:storeProduct)=>product._id===action.payload._id);
               if(exisitingProduct){
                 exisitingProduct.quantity += action.payload.quantity;
               }else{
@@ -29,7 +29,7 @@ export const nextSlice = createSlice({
               }
         },
         addToFavorite:(state,action)=>{
-              let exisitingProduct = state.favouriteData.find((product:storeProduct)=>product._id===action.payload._id);
+              const exisitingProduct = state.favouriteData.find((product:storeProduct)=>product._id===action.payload._id);
               if(exisitingProduct){
                 exisitingProduct.quantity += action.payload.quantity;
               }else{
@@ -37,11 +37,11 @@ export const nextSlice = createSlice({
               }
         },
         increaseQuantity:(state,action)=>{
-          let exisitingProduct = state.productData.find((product:storeProduct)=>product._id===action.payload._id);
+          const exisitingProduct = state.productData.find((product:storeProduct)=>product._id===action.payload._id);
             exisitingProduct && exisitingProduct.quantity++
         },
         decreaseQuantity:(state,action)=>{
-          let exisitingProduct = state.productData.find((product:storeProduct)=>product._id===action.payload._id);
+          const exisitingProduct = state.productData.find((product:storeProduct)=>product._id===action.payload._id);
           if(exisitingProduct?.quantity ===1){
             exisitingProduct.quantity=1
           }else{

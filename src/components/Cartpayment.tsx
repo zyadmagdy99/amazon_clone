@@ -8,7 +8,7 @@ import { useSession } from 'next-auth/react';
 
 export default function Cartpayment() {
 
-    let {productData, userInfo} = useSelector((state:stateProps)=>state.next)
+    const {productData, userInfo} = useSelector((state:stateProps)=>state.next)
 
     const [totalAmount, settotalAmount] = useState(0)
     useEffect(() => {

@@ -8,7 +8,7 @@ import Sidebar from '../Sidebar';
 
 export default function BottomHeader() {
   const {userInfo} = useSelector((state:stateProps)=>state.next)
-  let dispatch = useDispatch()
+  const dispatch = useDispatch()
   function handleSignOut(){
     signOut()
     dispatch(removeUser())

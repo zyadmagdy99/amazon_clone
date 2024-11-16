@@ -11,7 +11,7 @@ interface props {
 }
 
 export default function Home({data} :props) {
-  let dispatch = useDispatch()
+  const dispatch = useDispatch()
   useEffect(() => {
     
   dispatch(setAllProduct({allProduct : data}))
