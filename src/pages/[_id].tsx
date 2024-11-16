@@ -13,13 +13,23 @@ export default function OneProduct() {
   const [isLoading, setisLoading] = useState(true)
     const router = useRouter()
     const dispatch = useDispatch()
-    const [product, setproduct] = useState<productProps>({})
+    const [product, setproduct] = useState<productProps | null>(null)
+
     useEffect(() => {
-      setTimeout(() => {
-       setisLoading(false) 
-      },1500);
-      setproduct(router.query)
-    }, [router.query])
+      if (router.query && router.query._id) {
+        // Use type assertion here to tell TypeScript that the query parameters are of type `productProps`
+        const productData = router.query as unknown as productProps; // Force the type
+        setproduct(productData);
+        
+        setTimeout(() => {
+          setisLoading(false);
+        }, 1500);
+      }
+    }, [router.query]);
+  
+    if (!product) {
+      return <div>Loading...</div>;
+    }
     
   return (
     <div className='max-w-screen-xl mx-auto px-4 py-4 md:py-10'>
