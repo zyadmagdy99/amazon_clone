@@ -13,7 +13,10 @@ export default function RootLayOut({children} : props) {
     <Header />
     <BottomHeader />
     <main className="flex-1">{children}</main>
-    <Footer className="fixed bottom-0 w-full bg-gray-800 text-white text-center py-4 shadow-lg" />
+    <div>
+      
+    </div>
+    <Footer  />
   </div>
   
   )
