@@ -5,20 +5,26 @@ import GoogleProvider from 'next-auth/providers/google';
 export default NextAuth({
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID || '',
-      clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET, // Ensure this is set
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      // Redirect to the base URL or a valid URL
+      return url.startsWith(baseUrl) ? url : baseUrl;
+    },
     async signIn({ account }) {
-      if (!account?.accessToken) {
-        throw new Error('Access token not found!');
+      if (account?.provider === 'google') {
+        // Add any additional checks for Google
       }
-      return true;
+      return true; // Allow all sign-ins
     },
   },
+  debug: true, // Logs more information for debugging
 });
